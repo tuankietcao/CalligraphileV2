@@ -5,12 +5,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
 from keras.models import Sequential
 from keras.layers import Input, Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-import matplotlib.pyplot as plt
 import streamlit as st
 import keras
 
 def train_model(sample_per_letter, epochs):
-  data_path = 'Images/Images'
+  data_path = 'C:\Users\Admin\Desktop\PROJECT\Images\Images'
   data = []
   folders = os.listdir(data_path)
 
@@ -71,19 +70,6 @@ def train_model(sample_per_letter, epochs):
   model.summary()
   model.evaluate(train_X, train_Y)
 
- # plt.figure(figsize=(8,4))
-
-  # plt.subplot(1,2,1)
-  # plt.title('Loss')
-  # plt.xlabel('Epochs')
-  # plt.plot(history.history['loss'])
-
-  # plt.subplot(1,2,2)
-  # plt.title('Accuracy')
-  # plt.xlabel('Epochs')
-  # plt.plot(history.history['accuracy']) 
-
-  # plt.show()
   model_dir = "saved_models"
   os.makedirs(model_dir, exist_ok=True)
   model.save(os.path.join(model_dir, "my_model.keras"))
